@@ -71,7 +71,9 @@ export const remove = async (req, res) => {
 };
 
 export const list = (req, res) => {
+  console.log('first')
   Month.find((error, data) => {
+    console.log(error, data,'error, data')
     if (error) {
       error: "Không tìm thấy Danh muc";
     }
