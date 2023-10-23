@@ -6,8 +6,15 @@ import bodyParser from "body-parser";
 import expressValidator from "express-validator";
 import cors from "cors";
 import dataMonthRoutes from "./routes/DataMonth";
+import dataUploadImage from "./routes/UploadImage";
 
-
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: "dpfzwa6fo",
+  api_key: "785344461972688",
+  api_secret: "DcjrSpwI_j8Dwaw7-c9OiJ2e0yo",
+  secure: true,
+});
 const app = express();
 
 dotenv.config();
@@ -42,6 +49,7 @@ mongoose.connection.on("error", (err) => {
 
 // routes
 app.use("/api", dataMonthRoutes);
+app.use("/api", dataUploadImage);
 
 
 // listen
