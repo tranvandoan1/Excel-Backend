@@ -7,9 +7,8 @@ export const create = async (req, res) => {
     month: req.body.name,
     data: JSON.stringify(req.body.data),
   };
-  console.log(newData, "newData");
   await Month.create(newData);
-  Month.find((err, data) => {
+  await Month.find((err, data) => {
     if (err) {
       return res.json({
         message: "Lỗi !",
